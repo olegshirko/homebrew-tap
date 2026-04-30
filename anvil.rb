@@ -1,8 +1,8 @@
 class Anvil < Formula
   desc "CLI tool that provides container runtimes on macOS and Linux"
   homepage "https://github.com/olegshirko/anvil"
-  url "https://github.com/olegshirko/anvil/archive/refs/tags/v0.5.0.tar.gz"
-  sha256 "da442f4a1e1a31653737c3f490e43dfa1a962cfee035b82dc25fdd8f4585f938"
+  url "https://github.com/olegshirko/anvil/archive/refs/tags/v0.7.0.tar.gz"
+  sha256 "d994d4fde0a1a0dd2c48bd5aa05d428bef98a02015fefd34bba74e122e960a99"
   license "MIT"
   head "https://github.com/olegshirko/anvil.git", branch: "main"
 
@@ -19,7 +19,7 @@ class Anvil < Formula
     if build.head?
       ldflags << "-X anvil/internal/usecase.revision=#{Utils.git_short_head}"
     else
-      ldflags << "-X anvil/internal/usecase.revision=6a7d7dee79a7d0325456d377dcd751b7296290ba"
+      ldflags << "-X anvil/internal/usecase.revision=1171393282dc26ec22315c35a2eeb5e34ff6edca"
     end
 
     system "go", "build", *std_go_args(ldflags:), "./cmd/anvil"
