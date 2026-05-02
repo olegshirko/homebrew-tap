@@ -1,8 +1,8 @@
 class Anvil < Formula
   desc "CLI tool that provides container runtimes on macOS and Linux"
   homepage "https://github.com/olegshirko/anvil"
-  url "https://github.com/olegshirko/anvil/archive/refs/tags/v0.12.0.tar.gz"
-  sha256 "23fa14e9c3f0d1952f40c0801e69c2a0064a8e48b9b36736c28810acb5b1bb70"
+  url "https://github.com/olegshirko/anvil/archive/refs/tags/v0.14.0.tar.gz"
+  sha256 "d881fe8ef9857c65f10f5a3c371f88355741854049b57e171514d9bbe4d46b14"
   license "MIT"
   head "https://github.com/olegshirko/anvil.git", branch: "main"
 
