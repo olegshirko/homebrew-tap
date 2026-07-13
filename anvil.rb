@@ -1,35 +1,24 @@
 class Anvil < Formula
-  desc "CLI tool that provides container runtimes on macOS and Linux"
+  desc "Lightweight macOS Docker environment using Virtualization.framework"
   homepage "https://github.com/olegshirko/anvil"
-  url "https://github.com/olegshirko/anvil/archive/refs/tags/v0.16.0.tar.gz"
-  sha256 "21ef2e7bb91581c8dbfa544e830334ab5af57bf22c4473900ca0c8c0881d8628"
-  license "MIT"
+  url "https://github.com/olegshirko/anvil/archive/refs/tags/v1.0.1.tar.gz"
+  sha256 "1964647b913b29120cfa5ebc8c54c62308036e8e0d3b8bbf4465eb63a47677ff"
+  license "Apache-2.0"
+
   head "https://github.com/olegshirko/anvil.git", branch: "main"
 
-  depends_on "go" => :build
-  depends_on "lima"
-  depends_on "qemu"
+  depends_on "swift" => :build
 
   def install
-    ldflags = %W[
-      -s -w
-      -X anvil/internal/usecase.appVersion=#{version}
-    ]
-
-    if build.head?
-      ldflags << "-X anvil/internal/usecase.revision=#{Utils.git_short_head}"
-    else
-      ldflags << "-X anvil/internal/usecase.revision=bb2077f88b47be435c2a395724e2a81b8e5c24d0"
-    end
-
-    system "go", "build", *std_go_args(ldflags:), "./cmd/anvil"
-
-    if OS.mac?
-      system "codesign", "-s", "-", "--force", bin/"anvil"
-    end
+    system "swift", "build", "-c", "release"
+    system "codesign", "--entitlements", "entitlements.plist",
+           "--force", "-s", "-",
+           "--identifier", "com.olegshirko.vz-runner",
+           ".build/release/vz-runner"
+    bin.install ".build/release/vz-runner"
   end
 
   test do
-    system "#{bin}/anvil", "version"
+    system "#{bin}/vz-runner", "-h"
   end
 end
