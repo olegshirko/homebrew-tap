@@ -1,21 +1,16 @@
 class Anvil < Formula
   desc "Lightweight macOS Docker environment using Virtualization.framework"
   homepage "https://github.com/olegshirko/anvil"
-  url "https://github.com/olegshirko/anvil/archive/refs/tags/v1.0.1.tar.gz"
-  sha256 "1964647b913b29120cfa5ebc8c54c62308036e8e0d3b8bbf4465eb63a47677ff"
+  version "1.0.1"
   license "Apache-2.0"
 
-  head "https://github.com/olegshirko/anvil.git", branch: "main"
-
-  depends_on "swift" => :build
+  if Hardware::CPU.arm?
+    url "https://github.com/olegshirko/anvil/releases/download/v1.0.1/vz-runner-darwin-arm64"
+    sha256 "5e7da77240adff5871feb467e4623587d47c5033c0dbec5e0790998b0ab056f8"
+  end
 
   def install
-    system "swift", "build", "-c", "release"
-    system "codesign", "--entitlements", "entitlements.plist",
-           "--force", "-s", "-",
-           "--identifier", "com.olegshirko.vz-runner",
-           ".build/release/vz-runner"
-    bin.install ".build/release/vz-runner"
+    bin.install "vz-runner-darwin-arm64" => "vz-runner"
   end
 
   test do
