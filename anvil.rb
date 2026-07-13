@@ -10,10 +10,10 @@ class Anvil < Formula
   end
 
   def install
-    bin.install "vz-runner-darwin-arm64" => "vz-runner"
+    bin.install "vz-runner-darwin-arm64" => "anvil"
   end
 
   test do
-    system "#{bin}/vz-runner", "-h"
+    system "#{bin}/anvil", "-h"
   end
 end
