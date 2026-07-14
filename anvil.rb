@@ -1,17 +1,17 @@
 class Anvil < Formula
   desc "Lightweight macOS Docker environment using Virtualization.framework"
   homepage "https://github.com/olegshirko/anvil"
-  version "1.0.13"
+  version "1.0.15"
   license "Apache-2.0"
-  url "https://github.com/olegshirko/anvil/releases/download/v1.0.13/anvil-darwin-arm64.tar.gz"
-  sha256 "5029cf709af2cb3062dd89c6aaf1acddae53427c2a7fbc04c89ff29edd05b172"
+  url "https://github.com/olegshirko/anvil/releases/download/v1.0.15/anvil-darwin-arm64.tar.gz"
+  sha256 "2bc548bef3f9f0eb0bef5873e90803e9db207a40a620adec9425c0be6020b89b"
 
   resource "vmlinuz" do
-    url "https://github.com/olegshirko/anvil/releases/download/v1.0.13/vmlinuz-raw"
+    url "https://github.com/olegshirko/anvil/releases/download/v1.0.15/vmlinuz-raw"
   end
 
   resource "initramfs" do
-    url "https://github.com/olegshirko/anvil/releases/download/v1.0.13/initramfs-containerd"
+    url "https://github.com/olegshirko/anvil/releases/download/v1.0.15/initramfs-containerd"
   end
 
   def install
