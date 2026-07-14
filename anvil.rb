@@ -1,10 +1,10 @@
 class Anvil < Formula
   desc "Lightweight macOS Docker environment using Virtualization.framework"
   homepage "https://github.com/olegshirko/anvil"
-  version "1.0.24"
+  version "1.0.25"
   license "Apache-2.0"
-  url "https://github.com/olegshirko/anvil/releases/download/v1.0.24/anvil-darwin-arm64.tar.gz"
-  sha256 "8868d7068fd9b2f2f8fddab72822cb902f37ad39b7055b94d25973bf8564000e"
+  url "https://github.com/olegshirko/anvil/releases/download/v1.0.25/anvil-darwin-arm64.tar.gz"
+  sha256 "8d96dc83d3896d55901afd3b20df515bce1c00be6ce21e2fb2ea4e22fb70b649"
 
   def install
     bin.install "vz-runner-darwin-arm64" => "anvil"
