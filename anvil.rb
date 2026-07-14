@@ -8,7 +8,6 @@ class Anvil < Formula
 
   def install
     bin.install "vz-runner-darwin-arm64" => "anvil"
-    chmod 0755, bin/"anvil"
     state_dir = "#{ENV["HOME"]}/.anvil-vz"
     FileUtils.mkdir_p(state_dir)
     FileUtils.cp "vmlinuz-raw", state_dir
