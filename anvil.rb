@@ -1,20 +1,46 @@
 class Anvil < Formula
   desc "Lightweight macOS Docker environment using Virtualization.framework"
   homepage "https://github.com/olegshirko/anvil"
-  version "1.0.28"
+  url "https://github.com/olegshirko/anvil/releases/download/v1.0.30/anvil-darwin-arm64.tar.gz"
+  sha256 "e690cafbf6f208679345fe765884bfaaa89feecbb45e7338d2792263298e317d"
   license "Apache-2.0"
-  url "https://github.com/olegshirko/anvil/releases/download/v1.0.28/anvil-darwin-arm64.tar.gz"
-  sha256 "260a9da7a758574c070395b4f1780066b97563b3e601958d47ab9af899c6854c"
+
+  depends_on arch: :arm64
+  depends_on :macos
 
   def install
-    bin.install "vz-runner-darwin-arm64" => "anvil"
-    state_dir = "#{ENV["HOME"]}/.anvil-vz"
-    FileUtils.mkdir_p(state_dir)
-    FileUtils.cp "vmlinuz-raw", state_dir
-    FileUtils.cp "initramfs-containerd", state_dir
+    bin.install "vz-runner-darwin-arm64" => "vz-runner"
+    bin.install_symlink "vz-runner" => "anvil"
+
+    (share/"anvil/assets").install "vmlinuz-raw", "initramfs-containerd"
+    (share/"anvil/scripts").install "anvil-service.sh", "com.olegshirko.anvil.plist"
+  end
+
+  service do
+    run [opt_share/"anvil/scripts/anvil-service.sh", "start"]
+    require_root false
+    log_path var/"log/anvil.log"
+    error_log_path var/"log/anvil.log"
+    keep_alive false
+  end
+
+  def caveats
+    <<~EOS
+      Anvil needs a persistent disk for containerd state. It will be created
+      automatically on the first service start in ~/.anvil-vz/containerd-disk.img.
+
+      Start the service with:
+        brew services start anvil
+
+      Or manually with:
+        #{opt_share}/anvil/scripts/anvil-service.sh start
+
+      Switch Docker context to anvil:
+        docker context use anvil
+    EOS
   end
 
   test do
-    system "#{bin}/anvil", "-h"
+    system "#{bin}/vz-runner", "--help"
   end
 end
