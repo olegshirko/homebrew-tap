@@ -17,7 +17,7 @@ class Anvil < Formula
   end
 
   service do
-    run [opt_share/"anvil/scripts/anvil-service.sh", "start"]
+    run [opt_prefix/"share/anvil/scripts/anvil-service.sh", "start"]
     require_root false
     log_path var/"log/anvil.log"
     error_log_path var/"log/anvil.log"
@@ -33,7 +33,7 @@ class Anvil < Formula
         brew services start anvil
 
       Or manually with:
-        #{opt_share}/anvil/scripts/anvil-service.sh start
+        #{opt_prefix}/share/anvil/scripts/anvil-service.sh start
 
       Switch Docker context to anvil:
         docker context use anvil
