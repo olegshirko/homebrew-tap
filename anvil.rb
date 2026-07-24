@@ -11,7 +11,10 @@ class Anvil < Formula
 
   def install
     bin.install "vz-runner-darwin-arm64" => "vz-runner"
-    bin.install_symlink "vz-runner" => "anvil"
+    # Use an absolute target: Homebrew resolves relative symlink sources
+    # against bin/, but zerobrew's shim resolves them against the build
+    # directory (deleted after install), leaving a dangling symlink.
+    bin.install_symlink bin/"vz-runner" => "anvil"
 
     (share/"anvil/assets").install "vmlinuz-raw", "initramfs-containerd"
     (share/"anvil/scripts").install "anvil-service.sh", "com.olegshirko.anvil.plist"
@@ -33,7 +36,7 @@ class Anvil < Formula
       Start the service with:
         brew services start anvil
 
-      Or manually with:
+      Or manually (required under zerobrew, which has no services support):
         #{opt_prefix}/share/anvil/scripts/anvil-service.sh start
 
       Switch Docker context to anvil:
