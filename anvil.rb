@@ -16,7 +16,10 @@ class Anvil < Formula
     # directory (deleted after install), leaving a dangling symlink.
     bin.install_symlink bin/"vz-runner" => "anvil"
 
-    (share/"anvil/assets").install "vmlinuz-raw", "initramfs-containerd"
+    (share/"anvil/assets").install "initramfs-containerd"
+    # Releases >= 1.0.37 ship the kernel gzipped; older ones ship it raw.
+    (share/"anvil/assets").install "vmlinuz-raw.gz" if File.exist?("vmlinuz-raw.gz")
+    (share/"anvil/assets").install "vmlinuz-raw" if File.exist?("vmlinuz-raw")
     (share/"anvil/scripts").install "anvil-service.sh", "com.olegshirko.anvil.plist"
   end
 
