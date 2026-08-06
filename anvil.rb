@@ -9,6 +9,12 @@ class Anvil < Formula
   depends_on arch: :arm64
   depends_on :macos
 
+  bottle do
+    root_url "https://github.com/olegshirko/anvil/releases/download/v1.0.37"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_tahoe: "34b8b7bfdffac4dafc71f3484e5d6ff2f2d6c82eb8ffc475bc5b9b5abc0dd770"
+  end
+
   def install
     bin.install "vz-runner-darwin-arm64" => "vz-runner"
     # Use an absolute target: Homebrew resolves relative symlink sources
