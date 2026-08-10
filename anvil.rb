@@ -13,6 +13,8 @@ class Anvil < Formula
     root_url "https://github.com/olegshirko/anvil/releases/download/v1.0.38"
     rebuild 1
     sha256 cellar: :any_skip_relocation, arm64_tahoe: "22de6cbf678fd38ade4e826688eb17d0904b7c18cd1a3aca71f62463383351f5"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "22de6cbf678fd38ade4e826688eb17d0904b7c18cd1a3aca71f62463383351f5"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma: "22de6cbf678fd38ade4e826688eb17d0904b7c18cd1a3aca71f62463383351f5"
   end
 
 
