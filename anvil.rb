@@ -11,9 +11,9 @@ class Anvil < Formula
 
   bottle do
     root_url "https://github.com/olegshirko/anvil/releases/download/v1.0.39"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe: "d5bf7c5c2f9a6b05a6f0f31f1bcc8bede9d55c95626fcc21dc1b3110c26f9ac3"
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d5bf7c5c2f9a6b05a6f0f31f1bcc8bede9d55c95626fcc21dc1b3110c26f9ac3"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma: "d5bf7c5c2f9a6b05a6f0f31f1bcc8bede9d55c95626fcc21dc1b3110c26f9ac3"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe: "8639ebb0ef67f9f3eb3ca1ebd4ecef6d6ca72d5db533624be9d119a2bda25583"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8639ebb0ef67f9f3eb3ca1ebd4ecef6d6ca72d5db533624be9d119a2bda25583"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma: "8639ebb0ef67f9f3eb3ca1ebd4ecef6d6ca72d5db533624be9d119a2bda25583"
   end
 
 
