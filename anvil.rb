@@ -9,6 +9,13 @@ class Anvil < Formula
   depends_on arch: :arm64
   depends_on :macos
 
+  bottle do
+    root_url "https://github.com/olegshirko/anvil/releases/download/v1.0.48"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe: "4c7f0a34885c7fdee268a81357a42214d40c3a091331fffc2db9f3739ea83641"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "4c7f0a34885c7fdee268a81357a42214d40c3a091331fffc2db9f3739ea83641"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma: "4c7f0a34885c7fdee268a81357a42214d40c3a091331fffc2db9f3739ea83641"
+  end
+
 
 
 
