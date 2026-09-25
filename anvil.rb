@@ -1,9 +1,9 @@
 class Anvil < Formula
   desc "Lightweight macOS Docker environment using Virtualization.framework"
   homepage "https://github.com/olegshirko/anvil"
-  url "https://github.com/olegshirko/anvil/releases/download/v1.2.0/anvil-darwin-arm64.tar.gz"
-  version "1.2.0"
-  sha256 "6619c860191bdfd94a9f6cc7136a19cb9b34c7364ddb95787812efaac0d064e3"
+  url "https://github.com/olegshirko/anvil/releases/download/v1.3.0/anvil-darwin-arm64.tar.gz"
+  version "1.3.0"
+  sha256 "8c9fb665d0b7c14b8411c58206963eaa607457fe231bf4efc204b911ab2d1fb5"
   license "Apache-2.0"
 
   depends_on arch: :arm64
