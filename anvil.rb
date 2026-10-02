@@ -50,11 +50,13 @@ class Anvil < Formula
   end
 
   service do
-    run [opt_prefix/"share/anvil/scripts/anvil-service.sh", "start"]
+    # Foreground daemon (anvil-service.sh run, since 1.7.0): launchd
+    # supervises it and restarts it if it crashes; a stop ends it for good.
+    run [opt_prefix/"share/anvil/scripts/anvil-service.sh", "run"]
     require_root false
     log_path var/"log/anvil.log"
     error_log_path var/"log/anvil.log"
-    keep_alive false
+    keep_alive crashed: true
   end
 
   def caveats
