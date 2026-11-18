@@ -1,9 +1,9 @@
 class Anvil < Formula
   desc "Lightweight macOS Docker environment using Virtualization.framework"
   homepage "https://github.com/olegshirko/anvil"
-  url "https://github.com/olegshirko/anvil/releases/download/v1.10.3/anvil-darwin-arm64.tar.gz"
-  version "1.10.3"
-  sha256 "988dbd9b6b856409d6b935d2e5c7cebc352fd2117c0da5a6fafdfed3b80459e2"
+  url "https://github.com/olegshirko/anvil/releases/download/v1.10.4/anvil-darwin-arm64.tar.gz"
+  version "1.10.4"
+  sha256 "db4df4dabd6e976f1604c6c9084f12943e35dc2bd1c9815c1eb6b3ea7be62859"
   license "Apache-2.0"
 
   depends_on arch: :arm64
@@ -60,6 +60,7 @@ class Anvil < Formula
     bin.install_symlink bin/"vz-runner" => "anvil"
 
     (share/"anvil/assets").install "initramfs-containerd"
+    (share/"anvil/assets").install "buildkit.tar.zst" if File.exist?("buildkit.tar.zst")
     # Releases >= 1.0.37 ship the kernel gzipped; older ones ship it raw.
     (share/"anvil/assets").install "vmlinuz-raw.gz" if File.exist?("vmlinuz-raw.gz")
     (share/"anvil/assets").install "vmlinuz-raw" if File.exist?("vmlinuz-raw")
